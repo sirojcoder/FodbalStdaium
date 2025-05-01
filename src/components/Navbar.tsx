@@ -1,40 +1,22 @@
-import { BellDot, LogIn, MapPin, User } from 'lucide-react'
-import { Logo } from '../assets/images'
 import ToggleMode from './ToggleMode'
 
 const Navbar = () => {
 	return (
-		<nav className='py-5 border-b-[0.5px] border-gray-200 sticky top-0 bg- z-10 bg-gray-100 dark:bg-black/90 backdrop-blur-md'>
-			<div className='container w-10/12 mx-auto flex justify-between items-center'>
-				<div className='flex items-center gap-1 text-2xl text-black dark:text-white'>
-					<img className='' src={Logo} alt='logo' />
-					StreetFootball
+		<nav className='py-4 sticky top-0 z-30 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-black/80 shadow-sm'>
+			<div className='container mx-auto w-11/12 flex justify-between items-center'>
+				<div className='text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
+					Stadium
 				</div>
 
-				<ul className='flex items-center gap-5 '>
-					<li className='text-[16px] font-semibold text-gray-500 hover:text-blue-400 cursor-pointer dark:text-white'>
-						Football
+				<ul className='flex items-center gap-6'>
+					<li className='text-[16px] font-medium text-gray-600 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 transition cursor-pointer'>
+						Home
 					</li>
-					<li className='text-[16px] font-semibold text-gray-500 hover:text-blue-400 cursor-pointer dark:text-white'>
-						Tennis
-					</li>
-					<li className='text-[16px] font-semibold text-gray-500 hover:text-blue-400 cursor-pointer dark:text-white'>
-						Valleyball
-					</li>
-					<li className='text-[16px] font-semibold text-gray-500 hover:text-blue-400 cursor-pointer dark:text-white'>
-						Basketball
-					</li>
-
-					<li className='text-[16px] font-semibold text-gray-500 hover:text-blue-400 cursor-pointer dark:text-white'>
-						Table Tennis
-					</li>
+					{/* Qo‘shimcha sahifalar kerak bo‘lsa, shu yerga qo‘shishingiz mumkin */}
 				</ul>
+
 				<div className='flex items-center gap-4'>
 					<ToggleMode />
-					<MapPin className='dark:text-white' />
-					<BellDot className='dark:text-white' />
-					<LogIn className='dark:text-white' />
-					<User className='dark:text-white' />
 				</div>
 			</div>
 		</nav>
@@ -42,5 +24,3 @@ const Navbar = () => {
 }
 
 export default Navbar
-
-//

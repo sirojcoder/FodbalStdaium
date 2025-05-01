@@ -102,7 +102,7 @@ export default function StadiumManagement() {
 		setFormData({
 			name: '',
 			location: '',
-			price: 200000,
+			price: 150000,
 			image: defaultImage,
 			indoor: false,
 		})
@@ -181,181 +181,134 @@ export default function StadiumManagement() {
 	}
 
 	return (
-		<div className='bg-gray-100 dark:bg-black/90'>
-			<div className='container mx-auto w-10/12 py-5 px-2'>
-				<div className='flex justify-between items-center mb-6'>
-					<h1 className='text-2xl font-bold dark:text-white text-gray-800'>
-						Stadium Management
-					</h1>
-					<button
-						onClick={handleAddClick}
-						className='bg-green-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-green-700 transition-colors'
-					>
-						<Plus size={18} />
-						Add Stadium
-					</button>
-				</div>
+	<div className='bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-black min-h-screen'>
+		<div className='container mx-auto w-11/12 py-10 px-4'>
+			<div className='flex justify-between items-center mb-8'>
+				<h1 className='text-3xl font-bold dark:text-white text-gray-900'>Stadium Management</h1>
+				<button
+					onClick={handleAddClick}
+					className='bg-gradient-to-r from-green-500 to-blue-500 text-white px-5 py-2 rounded-xl flex items-center gap-2 hover:scale-105 active:scale-95 transition-transform'
+				>
+					
+					Add Stadium
+				</button>
+			</div>
 
-				{(isAdding || isEditing) && (
-					<div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50'>
-						<div className='bg-white rounded-lg p-6 w-full max-w-md'>
-							<div className='flex justify-between items-center mb-4'>
-								<h2 className='text-xl font-semibold'>
-									{isAdding
-										? 'Add New Stadium'
-										: 'Edit Stadium'}
-								</h2>
+			{(isAdding || isEditing) && (
+				<div className='fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4'>
+					<div className='bg-white dark:bg-gray-800 rounded-2xl p-6 w-full max-w-lg shadow-xl'>
+						<div className='flex justify-between items-center mb-5'>
+							<h2 className='text-2xl font-semibold dark:text-white'>
+								{isAdding ? 'Add New Stadium' : 'Edit Stadium'}
+							</h2>
+							<button onClick={handleCancel} className='text-gray-400 hover:text-gray-600 dark:hover:text-gray-200'>
+								<X size={26} />
+							</button>
+						</div>
+
+						<div className='space-y-4'>
+							<input
+								type='text'
+								name='name'
+								value={formData.name}
+								onChange={handleChange}
+								placeholder='Stadium Name'
+								className='w-full px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white'
+							/>
+
+							<input
+								type='text'
+								name='location'
+								value={formData.location}
+								onChange={handleChange}
+								placeholder='Location'
+								className='w-full px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white'
+							/>
+
+							<input
+								type='number'
+								name='price'
+								value={formData.price}
+								onChange={handleChange}
+								placeholder="Price (so'm/night)"
+								className='w-full px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white'
+							/>
+
+							<label className='flex items-center space-x-2 text-gray-700 dark:text-gray-300'>
+								<input
+									type='checkbox'
+									name='indoor'
+									checked={formData.indoor}
+									onChange={handleChange}
+								/>
+								<span>Indoor Stadium</span>
+							</label>
+
+							<div className='flex justify-end gap-3 pt-4'>
 								<button
 									onClick={handleCancel}
-									className='text-gray-500 hover:text-gray-700'
+									className='px-4 py-2 border rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
 								>
-									<X size={24} />
+									Cancel
 								</button>
-							</div>
-
-							<div>
-								<div className='mb-4'>
-									<label className='block text-gray-700 mb-2'>
-										Stadium Name
-									</label>
-									<input
-										type='text'
-										name='name'
-										value={formData.name}
-										onChange={handleChange}
-										className='w-full p-2 border border-gray-300 rounded'
-									/>
-								</div>
-
-								<div className='mb-4'>
-									<label className='block text-gray-700 mb-2'>
-										Location
-									</label>
-									<input
-										type='text'
-										name='location'
-										value={formData.location}
-										onChange={handleChange}
-										className='w-full p-2 border border-gray-300 rounded'
-									/>
-								</div>
-
-								<div className='mb-4'>
-									<label className='block text-gray-700 mb-2'>
-										Price (so'm/night)
-									</label>
-									<input
-										type='number'
-										name='price'
-										value={formData.price}
-										onChange={handleChange}
-										className='w-full p-2 border border-gray-300 rounded'
-									/>
-								</div>
-
-								<div className='mb-4'>
-									<label className='flex items-center text-gray-700'>
-										<input
-											type='checkbox'
-											name='indoor'
-											checked={formData.indoor}
-											onChange={handleChange}
-											className='mr-2'
-										/>
-										Indoor Stadium
-									</label>
-								</div>
-
-								<div className='flex justify-end gap-2 mt-6'>
-									<button
-										type='button'
-										onClick={handleCancel}
-										className='px-4 py-2 border border-gray-300 rounded text-gray-700 hover:bg-gray-100'
-									>
-										Cancel
-									</button>
-									<button
-										type='button'
-										onClick={handleSubmit}
-										className='px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 flex items-center gap-2'
-									>
-										<Check size={18} />
-										{isAdding
-											? 'Add Stadium'
-											: 'Save Changes'}
-									</button>
-								</div>
+								<button
+									onClick={handleSubmit}
+									className='px-5 py-2 bg-green-600 hover:bg-green-700 text-white rounded-xl flex items-center gap-2 transition'
+								>
+									<Check size={18} />
+									{isAdding ? 'Add Stadium' : 'Save Changes'}
+								</button>
 							</div>
 						</div>
 					</div>
-				)}
+				</div>
+			)}
 
-				<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
-					{stadiums.map(stadium => (
-						<div
-							key={stadium.id}
-							className='bg-white rounded-lg overflow-hidden shadow-md relative group'
-						>
-							<div className='relative h-48'>
-								<img
-									src={stadium.image}
-									alt={stadium.name}
-									className='w-full h-full object-cover'
-								/>
-								<div className='absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4'>
-									<h3 className='text-white font-semibold text-lg'>
-										{stadium.name}
-									</h3>
-									<div className='flex items-center text-white/80 text-sm'>
-										<MapPin size={14} className='mr-1' />
-										<span>{stadium.location}</span>
-									</div>
-								</div>
+			<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
+				{stadiums.map(stadium => (
+					<div
+						key={stadium.id}
+						className='bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg transition transform hover:scale-[1.02]'
+					>
+						<div className='relative h-48'>
+							<img
+								src={stadium.image}
+								alt={stadium.name}
+								className='w-full h-full object-cover'
+							/>
+							<div className='absolute bottom-0 w-full bg-gradient-to-t from-black/80 to-transparent p-3'>
+								<h3 className='text-white font-semibold text-lg'>{stadium.name}</h3>
+								<p className='flex items-center text-white text-sm opacity-80'>
+									<MapPin size={14} className='mr-1' />
+									{stadium.location}
+								</p>
+							</div>
+						</div>
+						<div className='p-4'>
+							<div className='flex justify-between items-center mb-2'>
+								<span className={`text-xs px-3 py-1 rounded-full font-medium ${stadium.indoor ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800'}`}>
+									{stadium.indoor ? 'Indoor' : 'Outdoor'}
+								</span>
+								<p className='text-sm font-semibold text-gray-800 dark:text-white'>
+									{stadium.price.toLocaleString()} so'm
+									<span className='text-gray-500 text-xs'> </span>
+								</p>
 							</div>
 
-							<div className='p-4'>
-								<div className='flex items-center justify-between'>
-									<span
-										className={`text-xs font-medium px-2 py-1 rounded ${
-											stadium.indoor
-												? 'bg-blue-100 text-blue-800'
-												: 'bg-green-100 text-green-800'
-										}`}
-									>
-										{stadium.indoor ? 'Indoor' : 'Outdoor'}
-									</span>
-									<div className='text-sm font-medium text-gray-900'>
-										{stadium.price.toLocaleString()} so'm
-										<span className='text-gray-500 text-xs'>
-											/night
-										</span>
-									</div>
-								</div>
-							</div>
-
-							<div className='absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity flex gap-1'>
-								<button
-									onClick={() => handleEditClick(stadium)}
-									className='p-2 bg-white rounded-full shadow-md hover:bg-gray-100'
-								>
+							<div className='flex justify-end gap-2'>
+								<button onClick={() => handleEditClick(stadium)} className='p-2 bg-gray-100 dark:bg-gray-700 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600'>
 									<Edit size={16} className='text-blue-600' />
 								</button>
-								<button
-									onClick={() =>
-										handleDeleteClick(stadium.id)
-									}
-									className='p-2 bg-white rounded-full shadow-md hover:bg-gray-100'
-								>
-									<Trash2
-										size={16}
-										className='text-red-600'
-									/>
+								<button onClick={() => handleDeleteClick(stadium.id)} className='p-2 bg-gray-100 dark:bg-gray-700 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600'>
+									<Trash2 size={16} className='text-red-600' />
 								</button>
 							</div>
 						</div>
-					))}
-				</div>
+					</div>
+				))}
 			</div>
 		</div>
-	)
+	</div>
+)
+
 }
