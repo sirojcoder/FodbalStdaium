@@ -1,4 +1,4 @@
-import { Check, Edit, MapPin, Plus, Trash2, X } from 'lucide-react'
+import { Check, Edit, MapPin,  Trash2, X } from 'lucide-react'
 import React, { useState } from 'react'
 
 // Type definition
